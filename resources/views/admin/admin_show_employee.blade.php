@@ -31,7 +31,7 @@
           </tr>
         </thead>
         <tbody>
-            @foreach ($UserData as $key=>$user )
+            @foreach ($EmployeeData as $key=>$user )
             <tr>
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->email }}</td>

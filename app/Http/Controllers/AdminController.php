@@ -38,8 +38,8 @@ class AdminController extends Controller
 
     public function AdminEmployee() {
     
-        $UserData = User::all();
-        return view('admin.admin_show_Employee', compact('UserData'));
+        $EmployeeData = User::all();
+        return view('admin.admin_show_Employee', compact('EmployeeData'));
             
         }
 

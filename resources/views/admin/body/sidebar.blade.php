@@ -18,23 +18,31 @@
             <span class="link-title">Dashboard</span>
           </a>
         </li>
-        <li class="nav-item nav-category">web apps</li>
+
+        <li class="nav-item nav-category">Agencies</li>
+
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="link-icon" data-feather="box"></i>
+            <span class="link-title">Show Agencies</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="link-icon" data-feather="box"></i>
+            <span class="link-title">Add Agencie</span>
+          </a>
+        </li>
+
+        <li class="nav-item nav-category">Entreprises</li>
 
         <li class="nav-item">
           <a href="{{ route('admin.Entreprise') }}" class="nav-link">
             <i class="link-icon" data-feather="box"></i>
-            <span class="link-title">show Entreprises</span>
+            <span class="link-title">Show Entreprises</span>
           </a>
         </li>
-
-        <li class="nav-item">
-          <a href="{{ route('admin.Employee') }}" class="nav-link">
-            <i class="link-icon" data-feather="box"></i>
-            <span class="link-title">show Employees</span>
-          </a>
-        </li>
-
-        <li class="nav-item nav-category">Management</li>
 
         <li class="nav-item">
           <a href="{{ route('admin.AddEntreprise') }}" class="nav-link">
@@ -43,9 +51,20 @@
           </a>
         </li>
 
+       
+
+        <li class="nav-item nav-category">Employees</li>
+
+        <li class="nav-item">
+          <a href="{{ route('admin.Employee') }}" class="nav-link">
+            <i class="link-icon" data-feather="box"></i>
+            <span class="link-title">show Employees</span>
+          </a>
+        </li>
+
         <li class="nav-item">
           <a href="{{ route('admin.AddEmployee') }}" class="nav-link">
-            <i class="link-icon" data-feather="box"></i>
+            <i class="link-icon" data-feather="users"></i>
             <span class="link-title">Add Employees</span>
           </a>
         </li>
