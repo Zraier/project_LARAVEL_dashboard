@@ -18,7 +18,8 @@ return new class extends Migration
             $table->date('date');
             $table->string('duree');
             $table->string('image');
-            $table->string('id_agence');
+            $table->unsignedBigInteger('id_agence');
+            $table->foreign('id_agence')->references('id_agence')->on('agencies')->onDelete('cascade');
             $table->enum('status',['done','arrive'])->default('arrive');
             $table->timestamps();
         });

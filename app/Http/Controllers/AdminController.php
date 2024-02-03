@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules\Password;
+
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 
-use function Laravel\Prompts\confirm;
+
 
 class AdminController extends Controller
 {
@@ -24,7 +25,7 @@ class AdminController extends Controller
 
     public function AdminEntreprise() {
        
-        $UserData = User::all();
+        
         return view('admin.admin_show_Entreprise', compact('UserData'));
             
         }
@@ -69,19 +70,19 @@ class AdminController extends Controller
 
     public function Adminprofile()
     {
-        $id= auth::user()->id;
-        $profileData = User::find($id);   
+        $username= auth::user()->username;
+        $profileData = Admin::where('username', $username)->first();
         return view('admin.admin_profile', compact('profileData'));
     }
 
     public function Adminprofileupdate(Request $request)
     {
-        $id= auth::user()->id;
-        $data = User::find($id);
+        $username= auth::user()->username;
+        $data = Admin::where('username', $username)->first();
         $data->name = $request->name;
         $data->username = $request->username;
         $data->email = $request->email;
-        $data->phone = $request->phone;
+        $data->tel = $request->phone;
         $data->address = $request->address;
         if ($request->file('photo')) {
             $file = $request->file('photo');

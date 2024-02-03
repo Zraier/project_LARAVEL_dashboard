@@ -179,9 +179,9 @@
 
 
                 @php
+                $username= Auth::user()->username;
+                $profileData = App\Models\Admin::where('username', $username)->first();
                 
-                $id= Auth::user()->id;
-                $profileData = App\Models\User::find($id);
           
                 @endphp
 

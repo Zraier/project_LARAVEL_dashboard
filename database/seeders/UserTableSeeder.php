@@ -42,7 +42,7 @@ class UserTableSeeder extends Seeder
         'password'=> Hash::make('111'),
         'role'=> 'admin',
         'status'=>'active',
-        'id_role'=>'1',
+        
     ],
 
   

@@ -9,4 +9,5 @@ class agencie extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    protected $primaryKey = 'id_agence';
 }
