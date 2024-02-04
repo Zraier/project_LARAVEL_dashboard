@@ -15,14 +15,14 @@
     <div class="col-md-12 grid-margin stretch-card">
   <div class="card">
   <div class="card-body">
-    <h6 class="card-title">User Table</h6>
-    <p class="text-muted mb-3">Here you can <a href="#" target="_blank">Update/Delete/Add </a>Users.</p>
+    <h6 class="card-title">Entreprise Table</h6>
+    <p class="text-muted mb-3">Here you can <a href="#" target="_blank">Update/Delete </a>Entreprise.</p>
     <div class="table-responsive">
       <table id="dataTableExample" class="table">
         <thead>
           <tr>
+            <th>Photo</th>
             <th>Name</th>
-            
             <th>Email</th>
             <th>Phone</th>
             <th>Adresse</th>
@@ -32,14 +32,15 @@
           </tr>
         </thead>
         <tbody>
-            @foreach ($UserData as $key=>$user )
+            @foreach ($EntrepriseData as $key=>$entreprise )
             <tr>
-                <td>{{ $user->name }}</td>
-                <td>{{ $user->email }}</td>
-                <td>{{ $user->phone }}</td>
-                <td>{{ $user->address }}</td>
-                <td>{{ $user->status }}</td>
-                <td>{{ $user->created_at }}</td>
+                <td><img class="wd-100 rounded-circle" src="{{ !empty($entreprise->photo) ? url('upload/entreprise_image/'.$entreprise->photo) : url('upload/no_image.jpg')}}" alt="profile"></td>
+                <td>{{ $entreprise->name }}</td>
+                <td>{{ $entreprise->email }}</td>
+                <td>{{ $entreprise->phone }}</td>
+                <td>{{ $entreprise->address }}</td>
+                <td>{{ $entreprise->status }}</td>
+                <td>{{ $entreprise->created_at }}</td>
                 <td><button type="button" class="btn btn-warning">Update</button>
                     <button type="button" class="btn btn-danger">Delete</button>
                 </td>
