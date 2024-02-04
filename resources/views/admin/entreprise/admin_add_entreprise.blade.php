@@ -53,8 +53,11 @@
                 <div class="row">
                   <div class="col-sm-4">
                     <div class="mb-3">
-                      <label class="form-label">Telephone</label>
-                      <input type="text" class="form-control" name="tel" placeholder="Enter city">
+                      <label class="form-label">Phone Number</label>
+                      <input type="text" class="form-control" name="phone" placeholder="Enter Phone Number" value="{{ old('phone') }}">
+                      @error('phone')
+                          <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                   </div><!-- Col -->
                   <div class="col-sm-4">

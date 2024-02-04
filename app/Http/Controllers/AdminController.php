@@ -43,6 +43,7 @@ class AdminController extends Controller
          // Validate the incoming request data
             $validatedData = $request->validate([
                 'name' => 'required|string|max:255',
+                'phone'  => 'required|string|max:15',
                 'email' => 'required|email|unique:agencies,email', // Unique email validation
                 'username' => 'required|string|unique:agencies,username', // Unique username validation
                 'password'  => 'required|confirmed',
@@ -54,7 +55,7 @@ class AdminController extends Controller
             $agencie->name = $validatedData['name'];
             $agencie->username = $validatedData['username'];
             $agencie->email = $validatedData['email'];
-            $agencie->tel = $request->tel;
+            $agencie->phone = $request->phone;
             $agencie->address = $request->address;
             if ($request->file('photo')) {
                 $file = $request->file('photo');
@@ -100,6 +101,7 @@ class AdminController extends Controller
          // Validate the incoming request data
             $validatedData = $request->validate([
                 'name' => 'required|string|max:255',
+                'phone'  => 'required|string|max:15',
                 'domaine_id' => 'required|exists:domaines,id', // Ensure domaine_id exists in the domaines table
                 'email' => 'required|email|unique:entreprises,email', // Unique email validation
                 'username' => 'required|string|unique:entreprises,username', // Unique username validation
@@ -112,7 +114,7 @@ class AdminController extends Controller
             $entreprise->name = $validatedData['name'];
             $entreprise->username = $validatedData['username'];
             $entreprise->email = $validatedData['email'];
-            $entreprise->tel = $request->tel;
+            $entreprise->phone = $request->phone;
             $entreprise->address = $request->address;
             $entreprise->id_dom = $validatedData['domaine_id'];
             if ($request->file('photo')) {
@@ -159,7 +161,7 @@ class AdminController extends Controller
          // Validate the incoming request data
             $validatedData = $request->validate([
                 'name' => 'required|string|max:255',
-                'tel'  => 'required|string|max:15',
+                'phone'  => 'required|string|max:15',
                 'entreprise_id' => 'required|exists:entreprises,id_ent',
                 'email' => 'required|email|unique:employees,email', // Unique email validation
                 'username' => 'required|string|unique:employees,username', // Unique username validation
@@ -172,7 +174,7 @@ class AdminController extends Controller
             $employee->name = $validatedData['name'];
             $employee->username = $validatedData['username'];
             $employee->email = $validatedData['email'];
-            $employee->tel = $request->tel;
+            $employee->phone = $request->phone;
             $employee->address = $request->address;
             $employee->id_ent = $validatedData['entreprise_id'];
             if ($request->file('photo')) {
@@ -234,7 +236,7 @@ class AdminController extends Controller
         $data->name = $request->name;
         $data->username = $request->username;
         $data->email = $request->email;
-        $data->tel = $request->phone;
+        $data->phone = $request->phone;
         $data->address = $request->address;
         if ($request->file('photo')) {
             $file = $request->file('photo');

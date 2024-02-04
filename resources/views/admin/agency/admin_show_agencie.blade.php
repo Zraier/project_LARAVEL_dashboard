@@ -39,7 +39,7 @@
                 <td>{{ $agencie->name }}</td>
                 <td>{{ $agencie->user->username }}</td>
                 <td>{{ $agencie->email }}</td>
-                <td>{{ $agencie->tel }}</td>
+                <td>{{ $agencie->phone }}</td>
                 <td>{{ $agencie->address }}</td>
                 <td>{{ $agencie->status }}</td>
                 <td>{{ $agencie->created_at->format('Y-m-d') }}</td>

@@ -53,9 +53,9 @@
                 <div class="row">
                   <div class="col-sm-4">
                     <div class="mb-3">
-                      <label class="form-label">Telephone</label>
-                      <input type="text" class="form-control @error('tel') is-invalid @enderror" name="tel" value="{{ old('email') }} placeholder="Enter Phone Number">
-                      @error('tel')
+                      <label class="form-label">Phone Number</label>
+                      <input type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" placeholder="Enter Phone Number">
+                        @error('phone')
                           <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>

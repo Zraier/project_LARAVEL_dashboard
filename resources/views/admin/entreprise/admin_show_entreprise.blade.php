@@ -41,7 +41,7 @@
                 {{-- <td>{{ $entreprise->user->username }}</td> --}}
                 <td>{{ $entreprise->domaine->domaine_activity }}</td>
                 <td>{{ $entreprise->email }}</td>
-                <td>{{ $entreprise->tel }}</td>
+                <td>{{ $entreprise->phone }}</td>
                 <td>{{ $entreprise->address }}</td>
                 <td>{{ $entreprise->status }}</td>
                 <td>{{ $entreprise->created_at->format('Y-m-d') }}</td>

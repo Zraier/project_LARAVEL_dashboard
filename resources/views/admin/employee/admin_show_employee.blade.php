@@ -41,7 +41,7 @@
                 <td>{{ $employee->user->username }}</td>
                 <td>{{ $employee->entreprise->name}}</td>
                 <td>{{ $employee->email }}</td>
-                <td>{{ $employee->tel }}</td>
+                <td>{{ $employee->phone }}</td>
                 <td>{{ $employee->address }}</td>
                 <td>{{ $employee->status }}</td>
                 <td>{{ $employee->created_at->format('Y-m-d') }}</td>
