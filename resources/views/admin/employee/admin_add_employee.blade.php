@@ -54,7 +54,10 @@
                   <div class="col-sm-4">
                     <div class="mb-3">
                       <label class="form-label">Telephone</label>
-                      <input type="text" class="form-control" name="tel" placeholder="Enter city">
+                      <input type="text" class="form-control @error('tel') is-invalid @enderror" name="tel" value="{{ old('email') }} placeholder="Enter Phone Number">
+                      @error('tel')
+                          <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                   </div><!-- Col -->
                   <div class="col-sm-4">

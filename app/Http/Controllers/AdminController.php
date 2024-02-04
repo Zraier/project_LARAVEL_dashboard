@@ -159,6 +159,7 @@ class AdminController extends Controller
          // Validate the incoming request data
             $validatedData = $request->validate([
                 'name' => 'required|string|max:255',
+                'tel'  => 'required|string|max:15',
                 'entreprise_id' => 'required|exists:entreprises,id_ent',
                 'email' => 'required|email|unique:employees,email', // Unique email validation
                 'username' => 'required|string|unique:employees,username', // Unique username validation
