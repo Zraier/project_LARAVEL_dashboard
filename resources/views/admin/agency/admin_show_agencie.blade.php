@@ -7,7 +7,7 @@
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Entreprise</li>
+            <li class="breadcrumb-item active" aria-current="page">Agencies</li>
         </ol>
     </nav>
 
@@ -15,15 +15,14 @@
     <div class="col-md-12 grid-margin stretch-card">
   <div class="card">
   <div class="card-body">
-    <h6 class="card-title">Entreprise Table</h6>
-    <p class="text-muted mb-3">Here you can <a href="#" target="_blank">Update/Delete </a>Entreprise.</p>
+    <h6 class="card-title">Agencie Table</h6>
+    <p class="text-muted mb-3">Here you can <a href="#" target="_blank">Update/Delete </a>Agencie.</p>
     <div class="table-responsive">
       <table id="dataTableExample" class="table">
         <thead>
           <tr>
             <th>Photo</th>
             <th>Name</th>
-            <th>Domaine</th>
             <th>Email</th>
             <th>Phone</th>
             <th>Adresse</th>
@@ -33,16 +32,15 @@
           </tr>
         </thead>
         <tbody>
-            @foreach ($EntrepriseData as $key=>$entreprise )
+            @foreach ($AgencieData as $key=>$agencie )
             <tr>
-                <td><img class="wd-100 rounded-circle" src="{{ !empty($entreprise->photo) ? url('upload/entreprise_image/'.$entreprise->photo) : url('upload/no_image.jpg')}}" alt="profile"></td>
-                <td>{{ $entreprise->name }}</td>
-                <td>{{ $entreprise->domaine->domaine_activity }}</td>
-                <td>{{ $entreprise->email }}</td>
-                <td>{{ $entreprise->phone }}</td>
-                <td>{{ $entreprise->address }}</td>
-                <td>{{ $entreprise->status }}</td>
-                <td>{{ $entreprise->created_at->format('Y-m-d') }}</td>
+                <td><img class="wd-100 rounded-circle" src="{{ !empty($agencie->photo) ? url('upload/agencie_image/'.$agencie->photo) : url('upload/no_image.jpg')}}" alt="profile"></td>
+                <td>{{ $agencie->name }}</td>
+                <td>{{ $agencie->email }}</td>
+                <td>{{ $agencie->tel }}</td>
+                <td>{{ $agencie->address }}</td>
+                <td>{{ $agencie->status }}</td>
+                <td>{{ $agencie->created_at->format('Y-m-d') }}</td>
                 <td><button type="button" class="btn btn-warning">Update</button>
                     <button type="button" class="btn btn-danger">Delete</button>
                 </td>

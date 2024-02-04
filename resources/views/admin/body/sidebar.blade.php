@@ -22,14 +22,14 @@
         <li class="nav-item nav-category">Agencies</li>
 
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="{{ route('admin.Agency') }}" class="nav-link">
             <i class="link-icon" data-feather="box"></i>
             <span class="link-title">Show Agencies</span>
           </a>
         </li>
 
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="{{ route('admin.AddAgency') }}" class="nav-link">
             <i class="link-icon" data-feather="box"></i>
             <span class="link-title">Add Agencie</span>
           </a>

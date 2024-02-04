@@ -42,7 +42,11 @@ Route::middleware('auth','role:admin')->group(function(){
     //Entreprise
     Route::get('/admin/Entreprise', [AdminController::class, 'AdminEntreprise'])->name('admin.Entreprise');
     Route::get('/admin/AddEntreprise', [AdminController::class, 'AdminAddEntreprise'])->name('admin.AddEntreprise');
-    Route::post('/admin/AddEntreprise', [AdminController::class, 'AdminAddEnt'])->name('admin.AddEnt');
+    Route::post('/admin/AddEntreprise', [AdminController::class, 'EntrepriseStore'])->name('admin.AddEnt');
+    //Agence
+    Route::get('/admin/Agency', [AdminController::class, 'AdminAgency'])->name('admin.Agency');
+    Route::get('/admin/AddAgency', [AdminController::class, 'AdminAddAgency'])->name('admin.AddAgency');
+    Route::post('/admin/AddAgency', [AdminController::class, 'AgencyStore'])->name('admin.AgencyStore');
     //Employee
     Route::get('/admin/Employee', [AdminController::class, 'AdminEmployee'])->name('admin.Employee');
     Route::get('/admin/AddEmployee', [AdminController::class, 'AdminAddEmployee'])->name('admin.AddEmployee');

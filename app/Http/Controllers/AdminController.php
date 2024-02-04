@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Admin;
+use App\Models\agencie;
 use App\Models\entreprise;
 use Illuminate\Http\Request;
 
@@ -24,20 +25,77 @@ class AdminController extends Controller
         
     }
 
+    //Agency section///////////////////////////////////////////
+    public function AdminAgency() {   
+        $AgencieData = agencie::all();
+        return view('admin.agency.admin_show_agencie', compact('AgencieData'));
+
+        }
+
+    public function AdminAddAgency() {
+
+        return view('admin.agency.admin_add_agencie');
+            
+        }
+
+    public function AgencyStore(Request $request) {
+         // Validate the incoming request data
+            $validatedData = $request->validate([
+                'name' => 'required|string|max:255',
+                'email' => 'required|email|unique:agencies,email', // Unique email validation
+                'username' => 'required|string|unique:agencies,username', // Unique username validation
+                'password'  => 'required|confirmed',
+                'password_confirmation'=>'required',
+            ]);
+            // Create a new Agence instance and fill it with the validated data
+            $agencie = new agencie();
+            
+            $agencie->name = $validatedData['name'];
+            $agencie->username = $validatedData['username'];
+            $agencie->email = $validatedData['email'];
+            $agencie->tel = $request->tel;
+            $agencie->address = $request->address;
+            if ($request->file('photo')) {
+                $file = $request->file('photo');
+                $filename= $agencie->name.date('Ymd').'.jpg';
+                $file->move(public_path('upload/agence_image'),$filename);
+                $agencie['photo']=$filename;
+            }
+            // Save the agence to the database
+            $agencie->save();
+             // Create a new USER instance and fill it with the validated data
+            $user = User::where('username', $validatedData['username'])->first();
+            if (!$user) {
+                $user = new User();
+                $user->username = $validatedData['username'];
+                $user->password = hash::make($validatedData['password']);
+                $user->role = 'agence';
+                $user->save();
+            }
+            
+            //notification
+            $notification = array(
+                'message' => 'Agency Added Successfully',
+                'alert-type'=> 'success'
+    
+            );
+            return redirect()->back()->with($notification);     
+        }
+
     //Entreprise section///////////////////////////////////////////
     public function AdminEntreprise() {   
         $EntrepriseData = entreprise::all();
-        return view('admin.admin_show_Entreprise', compact('EntrepriseData'));
+        return view('admin.entreprise.admin_show_entreprise', compact('EntrepriseData'));
 
         }
 
     public function AdminAddEntreprise() {
 
-        return view('admin.admin_add_Entreprise');
+        return view('admin.entreprise.admin_add_entreprise');
             
         }
 
-    public function AdminAddEnt(Request $request) {
+    public function EntrepriseStore(Request $request) {
          // Validate the incoming request data
             $validatedData = $request->validate([
                 'name' => 'required|string|max:255',
@@ -83,7 +141,7 @@ class AdminController extends Controller
             return redirect()->back()->with($notification);     
         }
 
-    //Employee section
+    //Employee section/////////////////
     public function AdminEmployee() {
     
         $EmployeeData = User::all();
