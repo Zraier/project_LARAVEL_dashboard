@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Admin;
 use App\Models\agencie;
+use App\Models\Employee;
 use App\Models\entreprise;
 use Illuminate\Http\Request;
 
@@ -141,18 +142,63 @@ class AdminController extends Controller
             return redirect()->back()->with($notification);     
         }
 
-    //Employee section/////////////////
-    public function AdminEmployee() {
-    
-        $EmployeeData = User::all();
-        return view('admin.admin_show_Employee', compact('EmployeeData'));
-            
+    //Agency section///////////////////////////////////////////
+    public function AdminEmployee() {   
+        $EmployeeData = Employee::all();
+        return view('admin.employee.admin_show_employee', compact('EmployeeData'));
+
         }
 
     public function AdminAddEmployee() {
 
-        return view('admin.admin_add_Employee');
+        return view('admin.employee.admin_add_employee');
             
+        }
+
+    public function EmployeeStore(Request $request) {
+         // Validate the incoming request data
+            $validatedData = $request->validate([
+                'name' => 'required|string|max:255',
+                'entreprise_id' => 'required|exists:entreprises,id_ent',
+                'email' => 'required|email|unique:employees,email', // Unique email validation
+                'username' => 'required|string|unique:employees,username', // Unique username validation
+                'password'  => 'required|confirmed',
+                'password_confirmation'=>'required',
+            ]);
+            // Create a new Agence instance and fill it with the validated data
+            $employee = new employee();
+            
+            $employee->name = $validatedData['name'];
+            $employee->username = $validatedData['username'];
+            $employee->email = $validatedData['email'];
+            $employee->tel = $request->tel;
+            $employee->address = $request->address;
+            $employee->id_ent = $validatedData['entreprise_id'];
+            if ($request->file('photo')) {
+                $file = $request->file('photo');
+                $filename= $employee->name.date('Ymd').'.jpg';
+                $file->move(public_path('upload/employee_image'),$filename);
+                $employee['photo']=$filename;
+            }
+            // Save the agence to the database
+            $employee->save();
+             // Create a new USER instance and fill it with the validated data
+            $user = User::where('username', $validatedData['username'])->first();
+            if (!$user) {
+                $user = new User();
+                $user->username = $validatedData['username'];
+                $user->password = hash::make($validatedData['password']);
+                $user->role = 'employee';
+                $user->save();
+            }
+            
+            //notification
+            $notification = array(
+                'message' => 'Employee Added Successfully',
+                'alert-type'=> 'success'
+    
+            );
+            return redirect()->back()->with($notification);     
         }
 
     //Admin section

@@ -50,6 +50,7 @@ Route::middleware('auth','role:admin')->group(function(){
     //Employee
     Route::get('/admin/Employee', [AdminController::class, 'AdminEmployee'])->name('admin.Employee');
     Route::get('/admin/AddEmployee', [AdminController::class, 'AdminAddEmployee'])->name('admin.AddEmployee');
+    Route::post('/admin/AddEmployee', [AdminController::class, 'EmployeeStore'])->name('admin.EmployeeStore');
 
 
 

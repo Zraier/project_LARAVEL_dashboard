@@ -18,7 +18,7 @@ class entreprise extends Model
 
      public function user()
     {
-        return $this->belongsTo(User::class, 'username', 'username');
+        return $this->hasOne(User::class, 'username', 'username');
     }
 
 }

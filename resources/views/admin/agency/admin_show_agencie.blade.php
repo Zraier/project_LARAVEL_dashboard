@@ -23,6 +23,7 @@
           <tr>
             <th>Photo</th>
             <th>Name</th>
+            <th>UserName</th>
             <th>Email</th>
             <th>Phone</th>
             <th>Adresse</th>
@@ -36,6 +37,7 @@
             <tr>
                 <td><img class="wd-100 rounded-circle" src="{{ !empty($agencie->photo) ? url('upload/agencie_image/'.$agencie->photo) : url('upload/no_image.jpg')}}" alt="profile"></td>
                 <td>{{ $agencie->name }}</td>
+                <td>{{ $agencie->user->username }}</td>
                 <td>{{ $agencie->email }}</td>
                 <td>{{ $agencie->tel }}</td>
                 <td>{{ $agencie->address }}</td>
