@@ -10,4 +10,15 @@ class entreprise extends Model
     use HasFactory;
     protected $guarded = [];
     protected $primaryKey = 'id_ent';
+
+    public function domaine()
+    {
+        return $this->belongsTo(Domaine::class, 'id_dom');
+    }
+
+     public function user()
+    {
+        return $this->belongsTo(User::class, 'username', 'username');
+    }
+
 }

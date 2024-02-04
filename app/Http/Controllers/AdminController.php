@@ -49,7 +49,7 @@ class AdminController extends Controller
             ]);
             // Create a new Entreprise instance and fill it with the validated data
             $entreprise = new Entreprise();
-            $user = new User();
+            
             $entreprise->name = $validatedData['name'];
             $entreprise->username = $validatedData['username'];
             $entreprise->email = $validatedData['email'];
@@ -62,12 +62,18 @@ class AdminController extends Controller
                 $file->move(public_path('upload/Entreprise_image'),$filename);
                 $entreprise['photo']=$filename;
             }
-            $user->username = $validatedData['username'];
-            $user->password = hash::make($validatedData['password']);
-            $user->role = 'entreprise';
             // Save the entreprise to the database
             $entreprise->save();
-            $user->save();
+             // Create a new USER instance and fill it with the validated data
+            $user = User::where('username', $validatedData['username'])->first();
+            if (!$user) {
+                $user = new User();
+                $user->username = $validatedData['username'];
+                $user->password = hash::make($validatedData['password']);
+                $user->role = 'entreprise';
+                $user->save();
+            }
+            
             //notification
             $notification = array(
                 'message' => 'Entreprise Added Successfully',

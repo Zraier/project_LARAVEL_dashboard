@@ -23,6 +23,7 @@
           <tr>
             <th>Photo</th>
             <th>Name</th>
+            <th>Domaine</th>
             <th>Email</th>
             <th>Phone</th>
             <th>Adresse</th>
@@ -36,11 +37,12 @@
             <tr>
                 <td><img class="wd-100 rounded-circle" src="{{ !empty($entreprise->photo) ? url('upload/entreprise_image/'.$entreprise->photo) : url('upload/no_image.jpg')}}" alt="profile"></td>
                 <td>{{ $entreprise->name }}</td>
+                <td>{{ $entreprise->domaine->domaine_activity }}</td>
                 <td>{{ $entreprise->email }}</td>
                 <td>{{ $entreprise->phone }}</td>
                 <td>{{ $entreprise->address }}</td>
                 <td>{{ $entreprise->status }}</td>
-                <td>{{ $entreprise->created_at }}</td>
+                <td>{{ $entreprise->created_at->format('Y-m-d') }}</td>
                 <td><button type="button" class="btn btn-warning">Update</button>
                     <button type="button" class="btn btn-danger">Delete</button>
                 </td>
