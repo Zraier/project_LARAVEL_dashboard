@@ -180,7 +180,7 @@
 
                 @php
                 $username= Auth::user()->username;
-                $profileData = App\Models\Admin::where('username', $username)->first();
+                $profileData = App\Models\Admin::findByUsername($username);
                 
           
                 @endphp

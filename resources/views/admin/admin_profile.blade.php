@@ -25,9 +25,9 @@
               <label class="tx-11 fw-bolder mb-0 text-uppercase">Email:</label>
               <p class="text-muted">{{ $profileData->email }}</p>
             </div>
-            <div class="mt-3">
+            <div class="mt-3"> 
                 <label class="tx-11 fw-bolder mb-0 text-uppercase">Phone:</label>
-                <p class="text-muted">{{ $profileData->tel }}</p>
+                <p class="text-muted">{{ $profileData->phone }}</p>
             </div>
             <div class="mt-3">
               <label class="tx-11 fw-bolder mb-0 text-uppercase">Adresse:</label>
@@ -72,7 +72,7 @@
                       </div>
                       <div class="mb-3">
                           <label for="exampleInputUsername1" class="form-label">Phone</label>
-                          <input type="text" class="form-control" name="phone" id="phone" value="{{$profileData->tel}}" autocomplete="off">
+                          <input type="text" class="form-control" name="phone" id="phone" value="{{$profileData->phone}}" autocomplete="off">
                       </div>
                       <div class="mb-3">
                           <label for="exampleInputPassword1" class="form-label">Address</label>

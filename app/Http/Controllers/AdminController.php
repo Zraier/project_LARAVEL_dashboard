@@ -20,8 +20,6 @@ use Illuminate\Support\Facades\Redirect;
 class AdminController extends Controller
 {
     public function AdminDashboard() {
-       
-
     return view('admin.index');
         
     }
@@ -60,7 +58,7 @@ class AdminController extends Controller
             if ($request->file('photo')) {
                 $file = $request->file('photo');
                 $filename= $agencie->name.date('Ymd').'.jpg';
-                $file->move(public_path('upload/agence_image'),$filename);
+                $file->move(public_path('upload/agencie_image'),$filename);
                 $agencie['photo']=$filename;
             }
             // Save the agence to the database
@@ -83,6 +81,31 @@ class AdminController extends Controller
             );
             return redirect()->back()->with($notification);     
         }
+
+    public function AgencyUpdate(Request $request) {
+
+        $id= $request->id_agence;
+        $data = agencie::find($id)->first();
+        $data->name = $request->name;
+        $data->username = $request->username;
+        $data->email = $request->email;
+        $data->phone = $request->phone;
+        $data->address = $request->address;
+        $data->status = $request->input('status');
+        if ($request->file('photo')) {
+            $file = $request->file('photo');
+            $filename= $data->name.date('Ymd').'.jpg';
+            $file->move(public_path('upload/admin_image'),$filename);
+            $data['photo']=$filename;
+        }
+        $data->save();
+        $notification = array(
+            'message' => 'Admin Profile Update Successfully',
+            'alert-type'=> 'success'
+
+        );
+        return redirect()->back()->with($notification);
+    }
 
     //Entreprise section///////////////////////////////////////////
     public function AdminEntreprise() {   
@@ -225,14 +248,14 @@ class AdminController extends Controller
     public function Adminprofile()
     {
         $username= auth::user()->username;
-        $profileData = Admin::where('username', $username)->first();
+        $profileData = Admin::findByUsername($username);
         return view('admin.admin_profile', compact('profileData'));
     }
 
     public function Adminprofileupdate(Request $request)
     {
         $username= auth::user()->username;
-        $data = Admin::where('username', $username)->first();
+        $data = Admin::findByUsername($username);
         $data->name = $request->name;
         $data->username = $request->username;
         $data->email = $request->email;

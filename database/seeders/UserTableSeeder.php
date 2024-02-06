@@ -15,24 +15,6 @@ class UserTableSeeder extends Seeder
     public function run(): void
     {
         
-
-    //     DB::table('admins')->insert([
-
-    //         //Admin
-    //     [
-            
-    //         'name'=>'slim',
-    //         'email'=>'slim.zraier@gmail.com',
-    //         'tel'=>'51493554',
-    //         'address'=>'sidi thabet',
-    //         'status'=>'active',
-            
-        
-            
-    //     ],  
-
-    // ]);
-
     DB::table('users')->insert([
 
         //Admin
@@ -41,11 +23,27 @@ class UserTableSeeder extends Seeder
         'username'=>'admin',
         'password'=> Hash::make('111'),
         'role'=> 'admin',
-        'status'=>'active',
+        
         
     ],
 
   
+
+]);
+    DB::table('admins')->insert([
+
+        //Admin
+    [
+        'name'=>'slim zraier',
+        'username'=>'admin',
+        'email'=>'slim.zraier@gmail',
+        'phone'=>'51493554',
+        'address'=>'Sidi Thabet',
+        
+        
+    ],
+
+
 
 ]);
         

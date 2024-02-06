@@ -11,13 +11,17 @@ class admin extends Model
     use HasFactory;
     protected $primaryKey = 'id_admin';
     protected $guarded = [];
-
-    public static function getAdminsWithUsers($username)
+    
+    public static function findByUsername($username)
     {
-        return DB::table('admins')
-        ->join('users', 'admins.username', '=', 'users.username')
-        ->where('admins.username', $username)
-        ->select('admins.*')
-        ->first();
+        return self::where('username', $username)->first();
     }
+
+    public function user()
+    {
+        return $this->hasOne(User::class, 'username', 'username');
+    }
+
+   
+
 }

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->index('username');       
             $table->string('email')->unique();
-            $table->string('tel');
+            $table->string('phone');
             $table->string('address');  
             $table->string('photo')->nullable(); 
             $table->enum('status',['active','inactive'])->default('active');

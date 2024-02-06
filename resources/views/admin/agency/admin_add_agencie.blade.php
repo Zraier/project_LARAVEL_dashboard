@@ -20,7 +20,7 @@
                   <div class="col-sm-4">
                     <div class="mb-3">
                       <label for="exampleInputUsername1" class="form-label"> </label>
-                      <img id="imageShow" class="wd-80 rounded-circle" src="{{ !empty($AgencieData->photo) ? url('upload/admin_image/'.$AgencieData->photo) : url('upload/no_image.jpg')}}" alt="profile">  
+                      <img id="imageShow" class="wd-80 rounded-circle" src="{{ !empty($AgencieData->photo) ? url('upload/agencie_image/'.$AgencieData->photo) : url('upload/no_image.jpg')}}" alt="profile">  
                     </div>
                   </div>
                   <div class="col-sm-4">

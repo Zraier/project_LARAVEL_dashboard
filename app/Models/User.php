@@ -19,7 +19,10 @@ class User extends Authenticatable
      */
     protected $guarded = [];
      
-
+    public function entreprise()
+    {
+        return $this->belongsTo(Entreprise::class, 'username', 'username');
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

@@ -31,7 +31,7 @@
         <li class="nav-item">
           <a href="{{ route('admin.AddAgency') }}" class="nav-link">
             <i class="link-icon" data-feather="box"></i>
-            <span class="link-title">Add Agencie</span>
+            <span class="link-title">Add Agencies</span>
           </a>
         </li>
 
