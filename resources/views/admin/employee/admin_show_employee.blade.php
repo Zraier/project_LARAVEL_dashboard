@@ -45,7 +45,8 @@
                 <td>{{ $employee->address }}</td>
                 <td>{{ $employee->status }}</td>
                 <td>{{ $employee->created_at->format('Y-m-d') }}</td>
-                <td><button type="button" class="btn btn-warning">Update</button>
+                <td>
+                  <a href="{{ route('admin.EmployeePageUpdate', ['id_emp' => $employee->id_emp]) }}" class="btn btn-warning">Update</a>
                     <button type="button" class="btn btn-danger">Delete</button>
                 </td>
             </tr>  

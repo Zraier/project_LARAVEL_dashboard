@@ -82,12 +82,17 @@ class AdminController extends Controller
             return redirect()->back()->with($notification);     
         }
 
+    public function AdminUpdateAgency($id_agence) {
+        
+        $data = agencie::find($id_agence);
+        return view('admin.agency.admin_update_agencie',compact('data'));
+        
+        }
     public function AgencyUpdate(Request $request) {
 
-        $id= $request->id_agence;
-        $data = agencie::find($id)->first();
+        $data = agencie::find($request->id_agence);
         $data->name = $request->name;
-        $data->username = $request->username;
+        
         $data->email = $request->email;
         $data->phone = $request->phone;
         $data->address = $request->address;
@@ -100,11 +105,11 @@ class AdminController extends Controller
         }
         $data->save();
         $notification = array(
-            'message' => 'Admin Profile Update Successfully',
+            'message' => 'Agency Profile Update Successfully',
             'alert-type'=> 'success'
 
         );
-        return redirect()->back()->with($notification);
+        return redirect('/admin/Agency')->with($notification);
     }
 
     //Entreprise section///////////////////////////////////////////
@@ -166,7 +171,35 @@ class AdminController extends Controller
             );
             return redirect()->back()->with($notification);     
         }
-
+        public function AdminUpdateEntreprise($id_ent) {
+        
+            $data = entreprise::find($id_ent);
+            return view('admin.entreprise.admin_update_entreprise',compact('data'));
+            
+            }
+        public function EntrepriseUpdate(Request $request) {
+    
+            
+            $data = entreprise::find($request->id_ent);
+            $data->name = $request->name;
+            $data->email = $request->email;
+            $data->phone = $request->phone;
+            $data->address = $request->address;
+            $data->status = $request->input('status');
+            if ($request->file('photo')) {
+                $file = $request->file('photo');
+                $filename= $data->name.date('Ymd').'.jpg';
+                $file->move(public_path('upload/Entreprise_image'),$filename);
+                $data['photo']=$filename;
+            }
+            $data->save();
+            $notification = array(
+                'message' => 'Entreprise Profile Update Successfully',
+                'alert-type'=> 'success'
+    
+            );
+            return redirect('/admin/Entreprise')->with($notification);
+        }
     //Agency section///////////////////////////////////////////
     public function AdminEmployee() {   
         $EmployeeData = Employee::all();
@@ -226,7 +259,35 @@ class AdminController extends Controller
             );
             return redirect()->back()->with($notification);     
         }
-
+        public function AdminUpdateEmployee($id_emp) {
+        
+            $data = Employee::find($id_emp);
+            return view('admin.employee.admin_update_employee',compact('data'));
+            
+            }
+        public function EmployeeUpdate(Request $request) {
+    
+            
+            $data = Employee::find($request->id_emp);
+            $data->name = $request->name;
+            $data->email = $request->email;
+            $data->phone = $request->phone;
+            $data->address = $request->address;
+            $data->status = $request->input('status');
+            if ($request->file('photo')) {
+                $file = $request->file('photo');
+                $filename= $data->name.date('Ymd').'.jpg';
+                $file->move(public_path('upload/employee_image'),$filename);
+                $data['photo']=$filename;
+            }
+            $data->save();
+            $notification = array(
+                'message' => 'Employee Profile Update Successfully',
+                'alert-type'=> 'success'
+    
+            );
+            return redirect('/admin/Employee')->with($notification);
+        }
     //Admin section
     public function Adminlogout(Request $request): RedirectResponse
     {

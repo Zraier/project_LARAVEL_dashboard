@@ -45,7 +45,8 @@
                 <td>{{ $entreprise->address }}</td>
                 <td>{{ $entreprise->status }}</td>
                 <td>{{ $entreprise->created_at->format('Y-m-d') }}</td>
-                <td><button type="button" class="btn btn-warning">Update</button>
+                <td>
+                  <a href="{{ route('admin.EntreprisePageUpdate', ['id_ent' => $entreprise->id_ent]) }}" class="btn btn-warning">Update</a>
                     <button type="button" class="btn btn-danger">Delete</button>
                 </td>
             </tr>  

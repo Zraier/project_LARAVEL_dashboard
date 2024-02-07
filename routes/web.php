@@ -43,15 +43,20 @@ Route::middleware('auth','role:admin')->group(function(){
     Route::get('/admin/Entreprise', [AdminController::class, 'AdminEntreprise'])->name('admin.Entreprise');
     Route::get('/admin/AddEntreprise', [AdminController::class, 'AdminAddEntreprise'])->name('admin.AddEntreprise');
     Route::post('/admin/AddEntreprise', [AdminController::class, 'EntrepriseStore'])->name('admin.AddEnt');
+    Route::get('/admin/Update/entreprise/{id_ent}', [AdminController::class, 'AdminUpdateEntreprise'])->name('admin.EntreprisePageUpdate');
+    Route::post('/admin/Update/entreprise', [AdminController::class, 'EntrepriseUpdate'])->name('admin.EntrepriseUpdate');
     //Agence
     Route::get('/admin/Agency', [AdminController::class, 'AdminAgency'])->name('admin.Agency');
     Route::get('/admin/AddAgency', [AdminController::class, 'AdminAddAgency'])->name('admin.AddAgency');
     Route::post('/admin/AddAgency', [AdminController::class, 'AgencyStore'])->name('admin.AgencyStore');
-    Route::post('/admin/Agency', [AdminController::class, 'AgencyUpdate'])->name('admin.AgencyUpdate');
+    Route::get('/admin/Update/Agency/{id_agence}', [AdminController::class, 'AdminUpdateAgency'])->name('admin.AgencyPageUpdate');
+    Route::post('/admin/Update/Agency', [AdminController::class, 'AgencyUpdate'])->name('admin.AgencyUpdate');
     //Employee
     Route::get('/admin/Employee', [AdminController::class, 'AdminEmployee'])->name('admin.Employee');
     Route::get('/admin/AddEmployee', [AdminController::class, 'AdminAddEmployee'])->name('admin.AddEmployee');
     Route::post('/admin/AddEmployee', [AdminController::class, 'EmployeeStore'])->name('admin.EmployeeStore');
+    Route::get('/admin/Update/Employee/{id_emp}', [AdminController::class, 'AdminUpdateEmployee'])->name('admin.EmployeePageUpdate');
+    Route::post('/admin/Update/Employee', [AdminController::class, 'EmployeeUpdate'])->name('admin.EmployeeUpdate');
 
 
 
