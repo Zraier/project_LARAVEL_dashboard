@@ -3,8 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AgencyController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\AgentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +18,7 @@ use App\Http\Controllers\AgentController;
 */
 
 Route::get('/', function () {
-    return view('admin.admin_login');
+    return view('auth.login');
 });
 
 
@@ -34,6 +34,7 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
 //admin route
 
 Route::middleware('auth','role:admin')->group(function(){
@@ -58,9 +59,7 @@ Route::middleware('auth','role:admin')->group(function(){
     Route::get('/admin/Update/Employee/{id_emp}', [AdminController::class, 'AdminUpdateEmployee'])->name('admin.EmployeePageUpdate');
     Route::post('/admin/Update/Employee', [AdminController::class, 'EmployeeUpdate'])->name('admin.EmployeeUpdate');
 
-
-
-
+    //admin profile
     Route::get('/admin/logout', [AdminController::class, 'Adminlogout'])->name('admin.logout');
     Route::get('/admin/profile', [AdminController::class, 'Adminprofile'])->name('admin.profile');
     Route::post('/admin/profile', [AdminController::class, 'Adminprofileupdate'])->name('admin.profile.update');
@@ -70,9 +69,12 @@ Route::middleware('auth','role:admin')->group(function(){
 
 });
 
-    Route::middleware('auth','role:agent')->group(function(){
+//agence route  
 
-    Route::get('/agent/dashboard', [AgentController::class, 'Agentdashboard'])->name('agent.dashboard');
+Route::middleware('auth','role:agence')->group(function(){
+
+    Route::get('/agency/dashboard', [AgencyController::class,'AgencyDashboard'])->name('agency.dashboard');
+    Route::get('/agence/logout', [AgencyController::class, 'Agencelogout'])->name('agence.logout');
 
 });
 

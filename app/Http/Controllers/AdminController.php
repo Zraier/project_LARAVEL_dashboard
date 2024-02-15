@@ -297,14 +297,11 @@ class AdminController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/admin/login');
+        return redirect('/');
     }
 
 
-    public function Adminlogin()
-    {
-        return view('admin.admin_login');
-    }
+   
 
     public function Adminprofile()
     {
