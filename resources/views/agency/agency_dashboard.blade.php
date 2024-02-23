@@ -23,7 +23,7 @@
 			sizes="16x16"
 			href="{{ asset('backend_agence/vendors/images/favicon-16x16.png')}}"
 		/>
-
+	
 		<!-- Mobile Specific Metas -->
 		<meta
 			name="viewport"
@@ -39,7 +39,11 @@
 			type="text/css"
 			href="{{ asset('backend_agence/vendors/styles/icon-font.min.css')}}"
 		/>
-
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="{{ asset('backend_agence/src/plugins/bootstrap-select-country/css/bootstrap-select-country.min.css')}}"
+		/>
 		<link
 			rel="stylesheet"
 			type="text/css"
@@ -105,5 +109,12 @@
 		<script src="{{ asset('backend_agence/src/plugins/jquery-steps/jquery.steps.js')}}"></script>
 		<script src="{{ asset('backend_agence/vendors/scripts/steps-setting.js')}}"></script>
 		
+
+		<script src="{{ asset('backend_agence/src/plugins/bootstrap-select-country/js/bootstrap-select-country.min.js')}}"></script>
+		<script src="{{ asset('backend_agence/src/plugins/bootstrap-select-country/js/bootstrap-select-country.js')}}"></script>
+	
+		
+	
+	
 	</body>
 </html>

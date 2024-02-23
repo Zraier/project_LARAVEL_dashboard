@@ -42,8 +42,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Last Name :</label>
-                                    <input type="text" class="form-control" />
+                                    <label>Select City :</label>
+                                    <select class="selectpicker countrypicker" data-flag="true" data-live-search="true"></select>
                                 </div>
                             </div>
                         </div>
@@ -61,29 +61,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Select City :</label>
-                                    <select class="custom-select form-control">
-                                        <option value="">Select City</option>
-                                        <option value="Amsterdam">India</option>
-                                        <option value="Berlin">UK</option>
-                                        <option value="Frankfurt">US</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Date of Birth :</label>
-                                    <input
-                                        type="text"
-                                        class="form-control date-picker"
-                                        placeholder="Select Date"
-                                    />
-                                </div>
-                            </div>
-                        </div>
+                    
                     </section>
                     <!-- Step 2 -->
                     <h5>Job Status</h5>
