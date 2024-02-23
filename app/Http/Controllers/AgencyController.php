@@ -12,6 +12,17 @@ class AgencyController extends Controller
         return view('agency.agency_index');
             
         }
+
+    public function Agencecalendar() {
+        return view('agency.agency_calendar');
+            
+    }
+
+    public function Agenceplan() {
+        return view('agency.agency_plan');
+            
+    }
+    
     public function Agencelogout(Request $request): RedirectResponse
     {
         Auth::guard('web')->logout();

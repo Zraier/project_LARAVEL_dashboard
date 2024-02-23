@@ -75,6 +75,9 @@ Route::middleware('auth','role:agence')->group(function(){
 
     Route::get('/agency/dashboard', [AgencyController::class,'AgencyDashboard'])->name('agency.dashboard');
     Route::get('/agence/logout', [AgencyController::class, 'Agencelogout'])->name('agence.logout');
+    Route::get('/agence/Calendar', [AgencyController::class, 'Agencecalendar'])->name('agence.calendar');
+    Route::get('/agence/Planing', [AgencyController::class, 'Agenceplan'])->name('agence.plan');
+
 
 });
 

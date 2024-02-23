@@ -1,6 +1,6 @@
 @extends('agency.agency_dashboard')
 @section('agency')
-
+<div class="xs-pd-20-10 pd-ltr-20">
     <div class="title pb-20">
         <h2 class="h3 mb-0">Hospital Overview</h2>
     </div>
@@ -229,5 +229,5 @@
             </a>
         </div>
     </div>
-
+</div>
 @endsection
