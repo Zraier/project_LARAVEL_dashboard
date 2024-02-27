@@ -80,7 +80,12 @@
 			</div>
 		</div> --}}
 		
+		@php
+		$username= Auth::user()->username;
+		$profileData = App\Models\agencie::findByUsername($username);
 		
+  
+		@endphp
 
 		<!-- Header -->
 		@include('agency.body.header')

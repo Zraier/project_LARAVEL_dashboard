@@ -12,6 +12,6 @@ class VoyAgency extends Model
 
     public function country()
     {
-        return $this->belongsTo(country::class, 'code');
+        return $this->belongsTo(countrie::class,'pays', 'code');
     }
 }

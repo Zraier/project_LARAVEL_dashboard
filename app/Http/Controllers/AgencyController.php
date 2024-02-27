@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\agencie;
 use App\Models\VoyAgency;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,8 +25,9 @@ class AgencyController extends Controller
             
     }
 
-    public function AgenceTrips() {
-        return view('agency.agency_trips');
+    public function AgenceTrips($id) {
+        $data= VoyAgency::where('id_agence', $id)->get();
+        return view('agency.agency_trips',compact('data'));
             
     }
     

@@ -66,12 +66,7 @@
             </div>
         </div>
         <div class="user-info-dropdown">
-            @php
-                $username= Auth::user()->username;
-                $profileData = App\Models\agencie::findByUsername($username);
-                
           
-                @endphp
             <div class="dropdown">
                 <a
                     class="dropdown-toggle"
