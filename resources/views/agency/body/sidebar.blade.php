@@ -21,7 +21,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="sitemap.html" class="dropdown-toggle no-arrow">
+                    <a href="{{ route('agence.trips') }}" class="dropdown-toggle no-arrow">
                         <span class="micon bi bi-diagram-3"></span
                         ><span class="mtext">My trips</span>
                     </a>

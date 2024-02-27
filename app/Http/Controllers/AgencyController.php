@@ -24,6 +24,11 @@ class AgencyController extends Controller
             
     }
 
+    public function AgenceTrips() {
+        return view('agency.agency_trips');
+            
+    }
+    
     public function StorePlan(Request $request) {
         $newvoy= new VoyAgency();
         $newvoy->pays = $request->country;
