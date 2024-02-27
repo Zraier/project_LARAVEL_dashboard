@@ -15,7 +15,7 @@
             <ul id="accordion-menu">
 
                 <li class="dropdown">
-                    <a href="{{ route ('agency.dashboard') }}" class="dropdown-toggle no-arrow">
+                    <a href="{{ route ('Employee.dashboard') }}" class="dropdown-toggle no-arrow">
                         <span class="micon bi bi-house"></span
                         ><span class="mtext">Home</span>
                     </a>
@@ -27,14 +27,14 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('agence.calendar') }}" class="dropdown-toggle no-arrow">
+                    <a href="{{ route('Employee.calendar') }}" class="dropdown-toggle no-arrow">
                         <span class="micon bi bi-calendar4-week"></span
                         ><span class="mtext">Calendar</span>
                     </a>
                 </li>
                 
                 <li>
-                    <a href="{{ route('agence.plan') }}" class="dropdown-toggle no-arrow">
+                    <a href="{{ route('Employee.plan') }}" class="dropdown-toggle no-arrow">
                         <span class="micon bi bi-calendar2-plus"></span
                         ><span class="mtext">Plan a Trip</span>
                     </a>

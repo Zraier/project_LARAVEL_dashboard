@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgencyController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -77,9 +78,23 @@ Route::middleware('auth','role:agence')->group(function(){
     Route::get('/agence/logout', [AgencyController::class, 'Agencelogout'])->name('agence.logout');
     Route::get('/agence/Calendar', [AgencyController::class, 'Agencecalendar'])->name('agence.calendar');
     Route::get('/agence/Planing', [AgencyController::class, 'Agenceplan'])->name('agence.plan');
+    Route::post('/agence/Planing', [AgencyController::class, 'StorePlan'])->name('store.plan');
 
 
 });
+
+//Employee route
+Route::middleware('auth','role:employee')->group(function(){
+
+    Route::get('/employee/dashboard', [EmployeeController::class,'EmployeeDashboard'])->name('Employee.dashboard');
+    Route::get('/employee/logout', [EmployeeController::class, 'Employeelogout'])->name('Employee.logout');
+    Route::get('/employee/Calendar', [EmployeeController::class, 'Employeecalendar'])->name('Employee.calendar');
+    Route::get('/employee/Planing', [EmployeeController::class, 'Employeeplan'])->name('Employee.plan');
+    Route::post('/employee/Planing', [EmployeeController::class, 'StorePlanEmployee'])->name('store.planemployee');
+
+
+});
+
 
 Route::get('/admin/login', [AdminController::class, 'Adminlogin'])->name('admin.login');
 

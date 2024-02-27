@@ -200,7 +200,7 @@ class AdminController extends Controller
             );
             return redirect('/admin/Entreprise')->with($notification);
         }
-    //Agency section///////////////////////////////////////////
+    //Employee section///////////////////////////////////////////
     public function AdminEmployee() {   
         $EmployeeData = Employee::all();
         return view('admin.employee.admin_show_employee', compact('EmployeeData'));

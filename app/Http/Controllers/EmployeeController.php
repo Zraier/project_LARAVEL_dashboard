@@ -2,35 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\VoyAgency;
+use App\Models\VoyUser;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 
-class AgencyController extends Controller
+class EmployeeController extends Controller
 {
-    public function AgencyDashboard() {
-        return view('agency.agency_index');
+    public function EmployeeDashboard() {
+        return view('employee.employee_index');
             
         }
 
-    public function Agencecalendar() {
-        return view('agency.agency_calendar');
+    public function Employeecalendar() {
+        return view('employee.employee_calendar');
             
     }
 
-    public function Agenceplan() {
-        return view('agency.agency_plan');
+    public function Employeeplan() {
+        return view('employee.employee_plan');
             
     }
 
-    public function StorePlan(Request $request) {
-        $newvoy= new VoyAgency();
+    public function StorePlanEmployee(Request $request) {
+        $newvoy= new VoyUser();
         $newvoy->pays = $request->country;
         $newvoy->programme = $request->programme;
         $newvoy->date = $request->date;
         $newvoy->duree = $request->duree;
-        $newvoy->id_agence = $request->id_agence;
+        $newvoy->id_emp = $request->id_emp;
         $newvoy->save();
      
         return redirect()->back(); 

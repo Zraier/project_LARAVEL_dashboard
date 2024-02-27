@@ -15,7 +15,10 @@ class Employee extends Model
     {
         return $this->belongsTo(entreprise::class, 'id_ent');
     }
-
+    public static function findByUsername($username)
+    {
+        return self::where('username', $username)->first();
+    }
      public function user()
     {
         return $this->hasOne(User::class, 'username', 'username');

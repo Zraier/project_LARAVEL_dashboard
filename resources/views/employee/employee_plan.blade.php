@@ -1,5 +1,5 @@
-@extends('agency.agency_dashboard')
-@section('agency')
+@extends('employee.employee_dashboard')
+@section('employee')
 <div class="pd-ltr-20 xs-pd-20-10">
     <div class="min-height-200px">
         <div class="page-header">
@@ -31,14 +31,14 @@
             </div>
             @php
                 $username= Auth::user()->username;
-                $profileData = App\Models\agencie::findByUsername($username);
+                $profileData = App\Models\Employee::findByUsername($username);
                 
           
                 @endphp
             <div class="wizard-content">
-                <form method="POST" action="{{ route('store.plan') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('store.planemployee') }}" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="id_agence" value="{{ $profileData->id_agence }}">
+                    <input type="hidden" name="id_emp" value="{{ $profileData->id_emp }}">
                     <h5>Country Selection</h5>
                     <br>
                     
