@@ -1,5 +1,6 @@
 @extends('agency.agency_dashboard')
 @section('agency')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <div class="pd-ltr-20 xs-pd-20-10">
     <div class="min-height-200px">
         <div class="page-header">
@@ -35,8 +36,8 @@
                 
           
                 @endphp
-            <div class="wizard-content">
-                <form method="POST" action="{{ route('store.plan') }}" enctype="multipart/form-data">
+           
+                <form method="POST" action="{{ route('store.plan') }}" enctype="multipart/form-data" id="mainForm">
                     @csrf
                     <input type="hidden" name="id_agence" value="{{ $profileData->id_agence }}">
                     <h5>Country Selection</h5>
@@ -44,7 +45,7 @@
                     
                         <div class="row">
                             
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label>Departure Date  :</label>
                                     <input
@@ -56,7 +57,7 @@
                                 />
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label>Arrival Date :</label>
                                     <input
@@ -67,22 +68,23 @@
 										/>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label>Trip Days :</label>
                                     <input
 											class="form-control"
 											placeholder="Select Date"
-											type="text"
+											type="number"
                                             name="duree"
                                             id="dateDifference"
+                                            readonly
 										/>
                                 </div>
                             </div>
                             
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <br>
                                     <br>
@@ -98,7 +100,7 @@
                     <br>
                         <div class="row">
                            
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Trip Programme :</label>
                                     <textarea class="form-control" name="programme"></textarea>
@@ -110,35 +112,75 @@
                     <h5>Images</h5>
                     <br>
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <div class="fv-row">
-                                        <!--begin::Dropzone-->
-                                        <div class="dropzone" id="some-dropzone">
-                                            <!--begin::Message-->
-                                            <div class="dz-message needsclick">
-                                                <i class="ki-duotone ki-file-up fs-3x text-primary"><span class="path1"></span><span class="path2"></span></i>
-                                
-                                                <!--begin::Info-->
-                                                <div class="ms-4">
-                                                    <h3 class="fs-5 fw-bold text-gray-900 mb-1">Drop files here or click to upload.</h3>
-                                                    <span class="fs-7 fw-semibold text-gray-500">Upload up to 10 files</span>
-                                                </div>
-                                                <!--end::Info-->
-                                            </div>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" name="photo" id="photo" />
+                                            <label class="custom-file-label">Choose file</label>
                                         </div>
-                                        <!--end::Dropzone-->
+                                     
                                     </div>
                                 </div>
                             </div>
 						</div>
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6 col-sm-12 mb-30">
+                                <div class="card card-box">
+                                    <img
+                                        id="imageShow"
+                                        class="card-img-top"
+                                        style="width:351px; height:198px "
+                                        src="{{ !empty($AgencieData->photo) ? url('upload/agencie_image/Trips_image'.$AgencieData->photo) : url('upload/no_image.jpg')}}"
+                                        alt="Card image cap"
+                                    />
+                                  
+                                </div>
+                            </div>
+                        </div>
+
                         <button type="submit" class="btn btn-primary">Submit</button>
                     
                     <!-- Step 4 -->
                     
                 </form>
-            </div>
+           
         </div>
     </div>
-</div>				
+</div>		
+<script type="text/javascript">
+    $(document).ready(function(){
+  
+      $('#photo').change(function(e){
+        var reader = new FileReader();
+        reader.onload = function(e){
+          $('#imageShow').attr('src',e.target.result);
+        } 
+        reader.readAsDataURL(e.target.files['0']);
+      });
+  
+    });
+  </script>		
+  <script>		
+    // Function to calculate date difference and update the input field
+    function calculateDateDifference() {
+        // Get the selected dates
+        var startDate = new Date(document.getElementById('startDate').value);
+        var endDate = new Date(document.getElementById('endDate').value);
+
+        // Calculate the difference in milliseconds
+        var differenceInMilliseconds = endDate - startDate;
+
+        // Convert milliseconds to days
+        var differenceInDays = Math.floor(differenceInMilliseconds / (1000 * 60 * 60 * 24));
+
+        // Update the input field with the result
+        document.getElementById('dateDifference').value = differenceInDays;
+    }
+
+    // Listen to input event on date input fields
+    document.getElementById('startDate').addEventListener('input', calculateDateDifference);
+    document.getElementById('endDate').addEventListener('input', calculateDateDifference);
+
+</script>
 @endsection

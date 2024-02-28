@@ -38,8 +38,14 @@ class AgencyController extends Controller
         $newvoy->date = $request->date;
         $newvoy->duree = $request->duree;
         $newvoy->id_agence = $request->id_agence;
+        if ($request->file('photo')) {
+            $file = $request->file('photo');
+            $filename= $newvoy->pays.'_'. $newvoy->id_agence.'_'.date('Ymd').'.jpg';
+            $file->move(public_path('upload/agencie_image/Trips_image'),$filename);
+            $newvoy['image']=$filename;
+        }
         $newvoy->save();
-     
+        
         return redirect()->back(); 
         
             

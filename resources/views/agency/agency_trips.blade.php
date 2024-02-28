@@ -25,10 +25,12 @@
         <h4 class="h4 text-blue mb-30">All Active Trips</h4>
         <div class="card-deck mb-30">
             @foreach ($data as $trip)
-            <div class="card">
+            <div class="col-lg-3 col-md-6 col-sm-12 mb-30">
+                <div class="card card-box">
                 <img
                     class="card-img-top"
-                    src="vendors/images/img2.jpg"
+                    style="width:351px; height:198px "
+                    src="{{ !empty($trip->image) ? url('upload/agencie_image/Trips_image/'.$trip->image) : url('upload/no_image.jpg')}}"
                     alt="Card image cap"
                 />
                 <div class="card-body">
@@ -39,6 +41,7 @@
                         {{$trip->programme}}
                     </p>
                     
+                </div>
                 </div>
             </div>
             @endforeach

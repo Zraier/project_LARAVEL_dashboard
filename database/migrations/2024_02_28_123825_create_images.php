@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('country', function (Blueprint $table) {
+        Schema::create('images', function (Blueprint $table) {
             $table->id();
-            $table->string('code');
-            $table->string('country');
+            $table->string('name');
+            $table->unsignedBigInteger('ref_voy_age');
+            $table->foreign('ref_voy_age')->references('ref_voy_agnce')->on('voy_agencies');
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('country');
+        Schema::dropIfExists('images');
     }
 };
