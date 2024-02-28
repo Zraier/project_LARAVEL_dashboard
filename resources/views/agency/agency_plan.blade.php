@@ -117,7 +117,7 @@
                                     <div class="fv-row">
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" name="photo" id="photo" />
-                                            <label class="custom-file-label">Choose file</label>
+                                            <label class="custom-file-label">Choose Front Image</label>
                                         </div>
                                      
                                     </div>
