@@ -21,8 +21,14 @@
                     </a>
                 </li>
                 <li>
-                    <a href="sitemap.html" class="dropdown-toggle no-arrow">
-                        <span class="micon bi bi-diagram-3"></span
+                    <a href="#" class="dropdown-toggle no-arrow">
+                        <span class="micon bi bi-journal-medical"></span
+                        ><span class="mtext">Matchmaking</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('Employee.trips', ['id' => $profileData->id_emp]) }}" class="dropdown-toggle no-arrow">
+                        <span class="micon bi bi-journal-bookmark"></span
                         ><span class="mtext">My trips</span>
                     </a>
                 </li>
@@ -39,7 +45,7 @@
                         ><span class="mtext">Plan a Trip</span>
                     </a>
                 </li>
-          
+                
                 <li>
                     <div class="dropdown-divider"></div>
                 </li>

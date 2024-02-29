@@ -90,6 +90,7 @@ Route::middleware('auth','role:employee')->group(function(){
     Route::get('/employee/dashboard', [EmployeeController::class,'EmployeeDashboard'])->name('Employee.dashboard');
     Route::get('/employee/logout', [EmployeeController::class, 'Employeelogout'])->name('Employee.logout');
     Route::get('/employee/Calendar', [EmployeeController::class, 'Employeecalendar'])->name('Employee.calendar');
+    Route::get('/employee/Trips/{id}', [EmployeeController::class, 'EmployeeTrips'])->name('Employee.trips');
     Route::get('/employee/Planing', [EmployeeController::class, 'Employeeplan'])->name('Employee.plan');
     Route::post('/employee/Planing', [EmployeeController::class, 'StorePlanEmployee'])->name('store.planemployee');
 

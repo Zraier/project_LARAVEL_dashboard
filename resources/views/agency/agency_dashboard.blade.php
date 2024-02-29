@@ -101,10 +101,6 @@
 			{{-- @include('agency.body.footer') --}}
 		</div>
 
-		
-					
-		
-		
 		<!-- js -->
 		<script src="{{ asset('backend_agence/vendors/scripts/core.js') }}"></script>
 		<script src="{{ asset('backend_agence/vendors/scripts/script.min.js') }}"></script>
@@ -117,7 +113,7 @@
 		<script src="{{ asset('backend_agence/vendors/scripts/steps-setting.js')}}"></script>
 		<script src="{{ asset('backend_agence/src/plugins/bootstrap-select-country/js/bootstrap-select-country.min.js')}}"></script>	
 		
-		
+		@yield('script')
 		
 	</body>
 </html>

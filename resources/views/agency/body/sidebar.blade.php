@@ -23,7 +23,7 @@
 
                 <li>
                     <a href="{{ route('agence.trips', ['id' => $profileData->id_agence]) }}" class="dropdown-toggle no-arrow">
-                        <span class="micon bi bi-diagram-3"></span
+                        <span class="micon bi bi-journal-bookmark"></span
                         ><span class="mtext">My trips</span>
                     </a>
                 </li>

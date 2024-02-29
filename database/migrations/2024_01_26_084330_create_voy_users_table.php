@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('programme');
             $table->date('date');
             $table->string('duree');
+            $table->string('image');
             $table->unsignedBigInteger('id_emp');
             $table->foreign('id_emp')->references('id_emp')->on('employees')->onDelete('cascade');
             $table->enum('status',['done','arrive'])->default('arrive');

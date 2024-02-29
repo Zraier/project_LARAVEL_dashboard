@@ -80,7 +80,12 @@
 			</div>
 		</div> --}}
 		
+		@php
+		$username= Auth::user()->username;
+		$profileData = App\Models\Employee::findByUsername($username);
 		
+  
+		@endphp
 
 		<!-- Header -->
 		@include('employee.body.header')
@@ -99,10 +104,6 @@
 			{{-- @include('employee.body.footer') --}}
 		</div>
 
-		
-					
-		
-		
 		<!-- js -->
 		<script src="{{ asset('backend_agence/vendors/scripts/core.js') }}"></script>
 		<script src="{{ asset('backend_agence/vendors/scripts/script.min.js') }}"></script>
@@ -115,51 +116,7 @@
 		<script src="{{ asset('backend_agence/vendors/scripts/steps-setting.js')}}"></script>
 		<script src="{{ asset('backend_agence/src/plugins/bootstrap-select-country/js/bootstrap-select-country.min.js')}}"></script>	
 		<script src="{{ asset('backend_agence/src/plugins/dropzone/src/dropzone.js')}}"></script>
-		<script>		
-			// Function to calculate date difference and update the input field
-			function calculateDateDifference() {
-				// Get the selected dates
-				var startDate = new Date(document.getElementById('startDate').value);
-				var endDate = new Date(document.getElementById('endDate').value);
-		
-				// Calculate the difference in milliseconds
-				var differenceInMilliseconds = endDate - startDate;
-		
-				// Convert milliseconds to days
-				var differenceInDays = Math.floor(differenceInMilliseconds / (1000 * 60 * 60 * 24));
-		
-				// Update the input field with the result
-				document.getElementById('dateDifference').value = differenceInDays;
-			}
-		
-			// Listen to input event on date input fields
-			document.getElementById('startDate').addEventListener('input', calculateDateDifference);
-			document.getElementById('endDate').addEventListener('input', calculateDateDifference);
-		</script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
-<script>
- @if(Session::has('message'))
- var type = "{{ Session::get('alert-type','info') }}"
- switch(type){
-    case 'info':
-    toastr.info(" {{ Session::get('message') }} ");
-    break;
-
-    case 'success':
-    toastr.success(" {{ Session::get('message') }} ");
-    break;
-
-    case 'warning':
-    toastr.warning(" {{ Session::get('message') }} ");
-    break;
-
-    case 'error':
-    toastr.error(" {{ Session::get('message') }} ");
-    break; 
- }
- @endif 
-</script>
+		@yield('script')
 	
 	</body>
 </html>

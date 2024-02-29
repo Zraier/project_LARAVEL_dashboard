@@ -131,7 +131,7 @@
                                         id="imageShow"
                                         class="card-img-top"
                                         style="width:351px; height:198px "
-                                        src="{{ !empty($AgencieData->photo) ? url('upload/agencie_image/Trips_image'.$AgencieData->photo) : url('upload/no_image.jpg')}}"
+                                        src="{{ url('upload/no_image.jpg')}}"
                                         alt="Card image cap"
                                     />
                                   
@@ -147,7 +147,9 @@
            
         </div>
     </div>
-</div>		
+</div>	
+@endsection
+@section('script')	
 <script type="text/javascript">
     $(document).ready(function(){
   
@@ -159,9 +161,7 @@
         reader.readAsDataURL(e.target.files['0']);
       });
   
-    });
-  </script>		
-  <script>		
+    });		
     // Function to calculate date difference and update the input field
     function calculateDateDifference() {
         // Get the selected dates

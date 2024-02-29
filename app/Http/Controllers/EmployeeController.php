@@ -24,6 +24,12 @@ class EmployeeController extends Controller
             
     }
 
+    public function EmployeeTrips($id) {
+        $data= VoyUser::where('id_emp', $id)->get();
+        return view('employee.employee_trips',compact('data'));
+            
+    }
+
     public function StorePlanEmployee(Request $request) {
         $newvoy= new VoyUser();
         $newvoy->pays = $request->country;
@@ -31,6 +37,12 @@ class EmployeeController extends Controller
         $newvoy->date = $request->date;
         $newvoy->duree = $request->duree;
         $newvoy->id_emp = $request->id_emp;
+        if ($request->file('photo')) {
+            $file = $request->file('photo');
+            $filename= $newvoy->pays.'_'. $newvoy->id_emp.'_'.date('Ymd').'.jpg';
+            $file->move(public_path('upload/employee_image/Trips_image'),$filename);
+            $newvoy['image']=$filename;
+        }
         $newvoy->save();
      
         return redirect()->back(); 
