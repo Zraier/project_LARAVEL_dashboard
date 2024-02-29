@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-6 col-sm-12">
                     <div class="title">
-                        <h4>My Trips</h4>
+                        <h4>Matchmaking</h4>
                     </div>
                     <nav aria-label="breadcrumb" role="navigation">
                         <ol class="breadcrumb">
@@ -14,7 +14,7 @@
                                 <a href="index.html">Home</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                My Trips
+                                Matching
                             </li>
                         </ol>
                     </nav>
@@ -22,7 +22,7 @@
             </div>
         </div>
         <!-- Default Basic Forms Start -->
-        <h4 class="h4 text-blue mb-30">All Active Trips</h4>
+        <h4 class="h4 text-blue mb-30">My Matchy Trips</h4>
         <div class="card-deck mb-30">
             @foreach ($data as $trip)
             <div class="col-lg-3 col-md-6 col-sm-12 mb-30">
@@ -30,11 +30,12 @@
                 <img
                     class="card-img-top"
                     style="width:351px; height:198px "
-                    src="{{ !empty($trip->image) ? url('upload/employee_image/Trips_image/'.$trip->image) : url('upload/no_image.jpg')}}"
+                    src="{{ !empty($trip->image) ? url('upload/agency_image/Trips_image/'.$trip->image) : url('upload/no_image.jpg')}}"
                     alt="Card image cap"
                 />
                 <div class="card-body">
-                    
+                    <h5>{{ $trip->id_agence }}</h5>
+                    <br>
                     <h4>{{ $trip->country->name }}</h4>
                     <h5>{{ $trip->date }}</h5>
                     <h5>{{ $trip->duree }} Days</h5>

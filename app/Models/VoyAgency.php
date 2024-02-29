@@ -15,8 +15,5 @@ class VoyAgency extends Model
         return $this->belongsTo(countrie::class,'pays', 'code');
     }
 
-    public function FindAgencie()
-    {
-        return $this->belongsTo(agencie::class,'id_agence', 'id_agence');
-    }
+    
 }

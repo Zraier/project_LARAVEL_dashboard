@@ -93,6 +93,7 @@ Route::middleware('auth','role:employee')->group(function(){
     Route::get('/employee/Trips/{id}', [EmployeeController::class, 'EmployeeTrips'])->name('Employee.trips');
     Route::get('/employee/Planing', [EmployeeController::class, 'Employeeplan'])->name('Employee.plan');
     Route::post('/employee/Planing', [EmployeeController::class, 'StorePlanEmployee'])->name('store.planemployee');
+    Route::get('/employee/Matchmaking', [EmployeeController::class, 'Matchmaking'])->name('Employee.Matchmaking');
 
 
 });

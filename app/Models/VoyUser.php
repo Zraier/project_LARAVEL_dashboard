@@ -15,4 +15,6 @@ class VoyUser extends Model
     {
         return $this->belongsTo(countrie::class,'pays', 'code');
     }
+
+    
 }

@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\agencie;
+use App\Models\VoyAgency;
 use App\Models\VoyUser;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class EmployeeController extends Controller
 {
@@ -45,12 +49,31 @@ class EmployeeController extends Controller
         }
         $newvoy->save();
      
-        return redirect()->back(); 
+        return redirect()->back();     
+    }
+
+    public function Matchmaking(){
         
-            
+        $currentDate = Carbon::now()->toDateString();
+
+        $results = DB::table('voy_users as v')
+            ->join('voy_agencies as a', function ($join) {
+                $join->on('v.pays', '=', 'a.pays')
+                     ->on('v.date', '=', 'a.date')
+                     ->on('v.duree', '=', 'a.duree');
+            })
+            // ->where('v.date', '>', $currentDate) // Condition to check date greater than current date
+            ->select('a.ref_voy_agence')
+            ->get();
+            // foreach ($results as $result) {
+                // Retrieve the VoyAgence model instance using the ID
+                $data = DB::table('voy_agencies')->where('ref_voy_agence', $results->ref_voy_agence)->first();
+            // }
+            // dd($data);
+            return view('employee.employee_matchmaking', compact('data'));
     }
     
-    public function Agencelogout(Request $request): RedirectResponse
+    public function Employeelogout(Request $request): RedirectResponse
     {
         Auth::guard('web')->logout();
 
