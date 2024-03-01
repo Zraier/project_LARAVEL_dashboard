@@ -49,27 +49,26 @@ class EmployeeController extends Controller
         }
         $newvoy->save();
      
-        return redirect()->back();     
+        return back()->with('message','Your trip is planed succefully');     
     }
 
     public function Matchmaking(){
         
         $currentDate = Carbon::now()->toDateString();
 
-        $results = DB::table('voy_users as v')
+        $data =VoyAgency::whereIn('ref_voy_agence', function ($query) {
+            $query->select('ref_voy_agence')
+            ->from('voy_users as v')
             ->join('voy_agencies as a', function ($join) {
                 $join->on('v.pays', '=', 'a.pays')
-                     ->on('v.date', '=', 'a.date')
-                     ->on('v.duree', '=', 'a.duree');
-            })
-            // ->where('v.date', '>', $currentDate) // Condition to check date greater than current date
-            ->select('a.ref_voy_agence')
-            ->get();
-            // foreach ($results as $result) {
-                // Retrieve the VoyAgence model instance using the ID
-                $data = DB::table('voy_agencies')->where('ref_voy_agence', $results->ref_voy_agence)->first();
-            // }
-            // dd($data);
+                    ->on('v.date', '=', 'a.date')
+                    ->on('v.duree', '=', 'a.duree');
+    })
+    // Add any additional conditions if needed
+    ->distinct();// To ensure unique values
+    })->get();
+        
+       
             return view('employee.employee_matchmaking', compact('data'));
     }
     

@@ -44,11 +44,7 @@
 			type="text/css"
 			href="{{ asset('backend_agence/src/plugins/bootstrap-select-country/css/bootstrap-select-country.min.css')}}"
 		/>
-		<link
-			rel="stylesheet"
-			type="text/css"
-			href="{{ asset('backend_agence/src/plugins/jquery-steps/jquery.steps.css')}}"
-		/>
+		
 		<link
 			rel="stylesheet"
 			type="text/css"
@@ -59,6 +55,9 @@
 			type="text/css"
 			href="{{ asset('backend_agence/src/plugins/fullcalendar/fullcalendar.css')}}"
 		/>
+		<link href="
+			https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
+			" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="{{ asset('backend_agence/vendors/styles/style.css')}}" />
 
 		<!-- Global site tag (gtag.js) - Google Analytics -->
@@ -113,9 +112,12 @@
 		<script src="{{ asset('backend_agence/src/plugins/fullcalendar/fullcalendar.min.js') }}"></script>
 		<script src="{{ asset('backend_agence/vendors/scripts/calendar-setting.js') }}"></script>
 		<script src="{{ asset('backend_agence/src/plugins/jquery-steps/jquery.steps.js')}}"></script>
-		<script src="{{ asset('backend_agence/vendors/scripts/steps-setting.js')}}"></script>
+		
 		<script src="{{ asset('backend_agence/src/plugins/bootstrap-select-country/js/bootstrap-select-country.min.js')}}"></script>	
 		<script src="{{ asset('backend_agence/src/plugins/dropzone/src/dropzone.js')}}"></script>
+		<script src="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.all.min.js
+"></script>
 		@yield('script')
 	
 	</body>
