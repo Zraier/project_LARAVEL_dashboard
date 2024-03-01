@@ -46,7 +46,7 @@ License: For each use you must have a valid license purchased only from above li
 	<link rel="stylesheet" href="{{ asset('backend/assets/fonts/feather-font/css/iconfont.css') }}">
 	<link rel="stylesheet" href="{{ asset('backend/assets/vendors/flag-icon-css/css/flag-icon.min.css') }}">
 	<!-- endinject -->
-
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
   <!-- Layout styles -->  
 	<link rel="stylesheet" href="{{ asset('backend/assets/css/demo2/style.css') }}">
   <!-- End layout styles -->
@@ -75,12 +75,18 @@ License: For each use you must have a valid license purchased only from above li
                     <form class="forms-sample" method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="mb-3">
-                        <label for="login" class="form-label">Email/Name/Phone</label>
-                        <input type="text" name="login" class="form-control" id="login" placeholder="Email/Name/Phone">
+                        <label for="login" class="form-label">UserName</label>
+                        <input type="text" name="login" class="form-control" id="login" placeholder="UserName" value="{{ old('login') }}" >
+                        @error('login')
+                          <span class="text-danger">{{ $message }}</span>
+                        @enderror
                       </div>
                       <div class="mb-3">
                         <label for="userPassword" class="form-label">Password</label>
-                        <input type="password" class="form-control" name="password" id="password" autocomplete="current-password" placeholder="Password">
+                        <input type="password" class="form-control" name="password" id="password" autocomplete="current-password" placeholder="Password" >
+                        @error('password')
+                          <span class="text-danger">{{ $message }}</span>
+                        @enderror
                       </div>
                       <div class="form-check mb-3">
                         <input type="checkbox" class="form-check-input" id="authCheck">
@@ -119,7 +125,7 @@ License: For each use you must have a valid license purchased only from above li
 	<script src="{{ asset('backend/assets/vendors/feather-icons/feather.min.js') }}"></script>
 	<script src="{{ asset('backend/assets/js/template.js') }}"></script>
 	<!-- endinject -->
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 	<!-- Custom js for this page -->
 	<!-- End custom js for this page -->
 

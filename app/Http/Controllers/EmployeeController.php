@@ -8,8 +8,10 @@ use App\Models\VoyUser;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use RealRashid\SweetAlert\Facades\Alert;
+
+use function Laravel\Prompts\alert;
 
 class EmployeeController extends Controller
 {
@@ -48,8 +50,8 @@ class EmployeeController extends Controller
             $newvoy['image']=$filename;
         }
         $newvoy->save();
-     
-        return back()->with('message','Your trip is planed succefully');     
+        Alert::success('Trip planed successfully');
+        return redirect()->back();     
     }
 
     public function Matchmaking(){

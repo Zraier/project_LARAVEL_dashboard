@@ -30,8 +30,9 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'login' => ['required', 'string'],
-            'password' => ['required', 'string'],
+            'login' => 'required', 'string','exists:users,username',
+            'password' => 'required', 'string',
+            
         ];
     }
 
@@ -41,9 +42,9 @@ class LoginRequest extends FormRequest
      * @throws \Illuminate\Validation\ValidationException
      */
     public function authenticate(): void
-    {
+    {   
         $this->ensureIsNotRateLimited();
-
+        
         $user= User::where('username',$this->login)->first();
                     
 
